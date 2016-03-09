@@ -1,8 +1,9 @@
 <div ng-controller="adminCtrl">
   <form>
-    <input ng-model='productName' placeholder="Product Name"></input>
-    <input ng-model='productSize' placeholder="Product Size"></input>
-    <button ng-click='addProduct(productName, productSize)'>Add Product</button>
+    <input ng-model='productTitle' placeholder="Product Title"></input>
+    <input ng-model='productDesc' placeholder="Product Description"></input>
+    <input ng-model='productPrice' placeholder="Product Price"></input>
+    <button ng-click='addProduct(productTitle, productDesc, productPrice)'>Add Product</button>
   </form>
   <ul ng-repeat="product in products">
     <li>{{product}}<button ng-click="delete(product)">Delete Product</button><button ng-click='showForm=!showForm'>Edit Product</button>

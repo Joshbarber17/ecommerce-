@@ -2,16 +2,18 @@ angular.module('ecomApp').controller('adminCtrl', function($scope, mainSvc) {
   mainSvc.getProducts().then(function(response){
     $scope.products = response.data
   })
-  $scope.addProduct = function(productName, productSize) {
+  $scope.addProduct = function(productTitle, productDesc, productPrice) {
       var product = {
-        name: productName,
-        size: productSize
+        title: productTitle,
+        description: productDesc,
+        price: productPrice
       }
       mainSvc.addProducts(product).then(function(response){
         mainSvc.getProducts().then(function(response){
           $scope.products = response.data
-          $scope.productName = '';
-          $scope.productSize = '';
+          $scope.productTitle = '';
+          $scope.productDesc = '';
+          $scope.productPrice = '';
       })
     })
   }
