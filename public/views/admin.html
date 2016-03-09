@@ -1,0 +1,21 @@
+<div ng-controller="adminCtrl">
+  <form>
+    <input ng-model='productName' placeholder="Product Name"></input>
+    <input ng-model='productSize' placeholder="Product Size"></input>
+    <button ng-click='addProduct(productName, productSize)'>Add Product</button>
+  </form>
+  <ul ng-repeat="product in products">
+    <li>{{product}}<button ng-click="delete(product)">Delete Product</button><button ng-click='showForm=!showForm'>Edit Product</button>
+      <form ng-show="showForm">
+        <input ng-model="newField" placeholder="New Field"></input>
+        <input ng-model="newStuff" placeholder="New Stuff"></input>
+        <button ng-click="submitNew(product, newField, newStuff)">Submit New Stuff</button>
+      </form>
+    </li>
+  </ul>
+  <form ng-show="showForm">
+    <input ng-model="newField" placeholder="New Field"></input>
+    <input ng-model="newStuff" placeholder="New Stuff"></input>
+    <button></button>
+  </form>
+</div>

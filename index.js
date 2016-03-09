@@ -5,6 +5,9 @@ var mongojs = require('mongojs');
 var app = express();
 app.use(bodyParser.json());
 var port = 2020;
+app.use(express.static(__dirname + '/public')); //runs a "live-server"
+app.use(cors());
+var objectId = mongojs.ObjectId
 app.listen(port, function(){
   console.log('listening on port ' + port);
 })
@@ -27,12 +30,12 @@ app.get("/products", function(req, res, next) {
   })
 })
 app.put("/products/:id", function(req, res, next) {
-  collection.update(req.query, {$set: req.body}, function(err, response) {
+  collection.update({_id: objectId(req.params.id)}, {$set: req.body}, function(err, response) {
     res.status(200).send(response)
   })
 })
 app.delete("/products/:id", function(req, res, next) {
-  collection.remove(req.query, function(err, response){
+  collection.remove({_id: objectId(req.params.id)}, function(err, response){
     res.status(200).send(response)
   })
 })
