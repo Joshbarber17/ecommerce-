@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var productsSchema = new Schema ({
@@ -17,6 +17,9 @@ var productsSchema = new Schema ({
     required: true,
     min: 0
   }
-})
+});
 
-module.exports = mongoose.model('products', productsSchema)
+module.exports = {
+  model: mongoose.model('products', productsSchema),
+  schema: productsSchema
+};
